@@ -1,7 +1,7 @@
 
 export default function Footer() {
     return (
-        <footer className="bg-blue-800  p-6">
+        <footer className="bg-blue-900  p-6">
             <div className="relative flex gap-8">
                 <div className="footer-brand flex flex-col w-[600px]">
                     <p>T3 academy is a place where children develop essential life skills and values. students learn discipline, responsibility, cooperation, and respect for others. we don't just teach lesson, we build future leaders.</p>
@@ -25,7 +25,7 @@ export default function Footer() {
                 <div className="absolute right-10 top-10 footer-social flex gap-4 items-center justify-center">
                     <a href="#">Facebook</a>
                     <a href="#">Linkened</a>
-                    <a href="#">Instagitgram</a>
+                    <a href="#">Instagram</a>
                 </div>
 
             </div>
