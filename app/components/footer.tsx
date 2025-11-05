@@ -1,4 +1,4 @@
-
+import Link from 'next/link'
 export default function Footer() {
     return (
         <footer className="bg-blue-900  p-6">
@@ -9,21 +9,30 @@ export default function Footer() {
 
                 <div className="footer-links">
                     <h4>Quick Links</h4>
-                    <ul>
-                        <li>Home</li>
-                        <li>About</li>
-                        <li>Services</li>
-                        <li>Contact</li>
+                    <ul className="hidden md:flex flex-col space-x-8 text-gray-600 font-medium">
+                        <li>
+                            <Link href="/" className="hover:text-gray-400 cursor-pointer shadow-lg text-white hover:underline">Home</Link>
+
+                        </li>
+                        <li>
+                            <Link href="" className="hover:text-gray-400 cursor-pointer shadow-lg text-white hover:underline">About Us</Link>
+                        </li>
+                        <li>
+                            <Link href="" className="hover:text-gray-400 cursor-pointer shadow-lg text-white hover:underline">Contact Us</Link>
+                        </li>
+                        <li>
+                            <Link href="" className="hover:text-gray-400 cursor-pointer shadow-lg text-white hover:underline"> Extra-Curricular</Link>
+                        </li>
                     </ul>
                 </div>
 
                 <div className="footer-contact flex flex-col items-center justify-center">
-                    <p>Email: t3academy@education.bt</p>
-                    <p>Phone: +975 17775550</p>
+                    <p>Email: t3academy@education.gov.bt</p>
+                    <p>Phone: +975 17777771</p>
                 </div>
 
                 <div className="absolute right-10 top-10 footer-social flex gap-4 items-center justify-center">
-                    <a href="#">Facebook</a>
+                    <a href="#" >Facebook</a>
                     <a href="#">Linkened</a>
                     <a href="#">Instagram</a>
                 </div>
