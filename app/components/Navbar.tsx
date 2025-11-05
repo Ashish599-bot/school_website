@@ -9,7 +9,10 @@ export function Navbar() {
           </a>
         </li>
         <li>
-          <a className="hover:text-gray-400 cursor-pointer shadow-lg text-white">
+          <a
+            href="/about_us"
+            className="hover:text-gray-400 cursor-pointer shadow-lg text-white"
+          >
             About Us
           </a>
         </li>
