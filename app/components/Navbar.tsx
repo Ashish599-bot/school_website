@@ -1,30 +1,23 @@
+import Link from "next/link";
+
 export function Navbar() {
+
   return (
-    <nav className="flex justify-between items-center mx-auto py-6 px-4 bg-blue-900 w-full fixed top-0">
+    <nav className="flex justify-between items-center mx-auto py-6 px-4 bg-blue-900 w-full">
       <div className="text-2xl font-bold text-white ">T3 Academy</div>
       <ul className="hidden md:flex space-x-8 text-gray-600 font-medium">
         <li>
-          <a className="hover:text-gray-400 cursor-pointer shadow-lg text-white">
-            Home
-          </a>
+          <Link href="/" className="hover:text-gray-400 cursor-pointer shadow-lg text-white hover:underline">Home</Link>
+
         </li>
         <li>
-          <a
-            href="/about_us"
-            className="hover:text-gray-400 cursor-pointer shadow-lg text-white"
-          >
-            About Us
-          </a>
+
         </li>
         <li>
-          <a className="hover:text-gray-400 cursor-pointer shadow-lg text-white">
-            Contact Us
-          </a>
+          <Link href="" className="hover:text-gray-400 cursor-pointer shadow-lg text-white hover:underline">Contact Us</Link>
         </li>
         <li>
-          <a className="hover:text-gray-400 cursor-pointer shadow-lg text-white">
-            Alumni
-          </a>
+          <Link href="" className="hover:text-gray-400 cursor-pointer shadow-lg text-white hover:underline"> Extra-Curricular</Link>
         </li>
       </ul>
     </nav>
