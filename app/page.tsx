@@ -24,10 +24,24 @@ export default function Home() {
           backgroundImage: `url(${img[index]})`,
         }}
       >
+        {/* {img.map((src, i) => (
+          <img
+            key={i}
+            src={src}
+            alt={`slide-${i}`}
+            className="w-full h-64 object-cover shrink-0"
+          />
+        ))} */}
         {/* Optional content overlay */}
-        <div className="bg-black/40 h-full w-full flex items-center justify-center text-white text-3xl font-bold">
-          Beautiful Bhutan
+        <div className="bg-black/40 h-full w-full flex items-end text-white text-3xl font-bold p-4">
+          Learn with Dignity and Integrity
         </div>
+      </div>
+      <div className="p-4 text-blue-700 flex flex-col">
+        <h1 className="font-bold text-xl ">VISION </h1>
+        <p>“To nurture lifelong learners who are responsible, compassionate, and capable of contributing positively to society.”</p>
+        <h1 className="font-bold text-xl mt-4">Message from King</h1>
+        <p>"Education should empower citizens with 21st-century skills, a strong work ethic, and a deep sense of responsibility to the nation"</p>
       </div>
 
     </main>
