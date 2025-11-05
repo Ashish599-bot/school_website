@@ -16,7 +16,7 @@ export default function Footer() {
 
                         </li>
                         <li>
-                            <Link href="" className="hover:text-gray-400 cursor-pointer shadow-lg text-white hover:underline">About Us</Link>
+                            <Link href="/about_us" className="hover:text-gray-400 cursor-pointer shadow-lg text-white hover:underline">About Us</Link>
                         </li>
                         <li>
                             <Link href="" className="hover:text-gray-400 cursor-pointer shadow-lg text-white hover:underline">Contact Us</Link>
