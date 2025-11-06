@@ -19,7 +19,7 @@ export default function Home() {
   }, [img.length])
 
   return (
-    <main className="bg-white min-h-screen p-4">
+    <main className="bg-white min-h-screen">
       <div
         className="w-full h-150 bg-cover bg-center transition-all duration-1000 ease-in-out"
         style={{
