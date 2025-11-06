@@ -1,13 +1,15 @@
-require("dotenv").config();
+require('dotenv').config();
+
 module.exports = {
+
   development: {
-    client: "pg",
+    client: 'pg',
     connection: {
-      user: process.env.PG_USER,
-      password: process.env.PG_PASSWORD,
-      database: process.env.PG_DATABASE,
-      host: "localhost",
-      port: 5433,
-    },
+      host: 'localhost',
+      password: process.env.PD_PASS,
+      user: process.env.PD_USER,
+      database: process.env.PD_DB,
+      port: Number(process.env.PD_PORT) || 5432,
+    }
   },
 };

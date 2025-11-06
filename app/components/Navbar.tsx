@@ -19,7 +19,7 @@ export default function Navbar() {
         </li>
 
         <li>
-          <Link href="" className="hover:text-gray-400 cursor-pointer shadow-lg text-white hover:underline"> Extra-Curricular</Link>
+          <Link href="/curricular" className="hover:text-gray-400 cursor-pointer shadow-lg text-white hover:underline"> Extra-Curricular</Link>
         </li>
       </ul>
     </nav>
