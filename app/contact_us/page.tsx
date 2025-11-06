@@ -42,7 +42,11 @@ export default function Contact() {
   };
 
   return (
-    <main>
+    <div className="min-h-screen grid grid-cols-4 mb-20">
+      {inform?.map((school, index) => (
+        <div
+          key={school.id}
+          className="max-w-sm mx-auto h-[350px] bg-white rounded-2xl shadow-lg mt-10 mb-12"
       <div className="flex gap-4 justify-center items-center mt-4">
         <input
           className="py-2 px-4 shadow-lg rounded-xl border border-black"
