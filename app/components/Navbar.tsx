@@ -34,12 +34,12 @@ export default function Navbar() {
 
         <li>
           <Link
-            href="#"
+            href="/curricular"
             className="hover:text-gray-400 cursor-pointer shadow-lg text-white hover:underline"
           >
+            {" "}
             Extra-Curricular
           </Link>
-          <Link href="/curricular" className="hover:text-gray-400 cursor-pointer shadow-lg text-white hover:underline"> Extra-Curricular</Link>
         </li>
       </ul>
     </nav>
