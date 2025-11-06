@@ -17,7 +17,7 @@ export async function POST(req: Request) {
   const { name, email, contact_Number, year_experience, job_title } =
     await req.json();
 
-  if (!name || !email || !contact_Number || !year_experience) {
+  if (!name || !email || !contact_Number || !year_experience || !job_title) {
     return Response.json({ error: "All fields are required" }, { status: 400 });
   }
 

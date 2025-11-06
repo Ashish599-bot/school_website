@@ -1,10 +1,76 @@
 'use client'
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
-export default function () {
+export default function Adding() {
+    const [formData, setFormData] = useState({
+        name: "",
+        noOfStudent: "",
+        coordinator: "",
+        activity: ""
+    });
+    const router = useRouter();
+
+    const addHandler = async (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    }
+    const fetchData = async () => {
+
+        const res = await fetch('http://localhost:3000/api/curricular', {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData)
+        });
+
+        const result = await res.json();
+        console.log("added sucessfully", result);
+        setFormData(result)
+        if (!result.ok) {
+            alert('added sucessfull')
+            setFormData({
+                name: "",
+                noOfStudent: "",
+                coordinator: "",
+                activity: ""
+            });
+            router.push('/curricular')
+        }
+        else {
+            alert('fail to add')
+        }
+    }
+
 
     return (
-        <main>
+        <main className="min-h-screen p-6 grid place-items-center">
+            <div className="border p-10 flex flex-col gap-7">
+                <input type="text" placeholder="enter the name of programme"
+                    onChange={addHandler}
+                    name="name"
+                    value={formData.name} />
+                <input type="text" placeholder="enter the number of student"
+                    onChange={addHandler}
+                    name="noOfStudent"
+                    value={formData.noOfStudent} />
+                <input type="text" placeholder="Name coordinator"
+                    onChange={addHandler}
+                    name="coordinator"
+                    value={formData.coordinator} />
+                <input type="text" placeholder="Activity"
+                    onChange={addHandler}
+                    name="activity"
+                    value={formData.activity} />
+
+
+                <button type="submit" className="hover:text-blue-500" onClick={fetchData} >
+                    submit
+                </button>
+
+            </div>
 
         </main>
     )

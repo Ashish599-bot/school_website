@@ -8,22 +8,7 @@ const db = knex(knexConfig.development);
 export async function GET() {
     const data = await db('curricular').select('*');
     return NextResponse.json({ Message: "succcessfull", data }, { status: 200 });
-}
-
-// export async function POST(request: Request) {
-//     const { name, noOfStudent, coordinator, activity } = await request.json();
-//     if (!name || !noOfStudent || !coordinator || !activity) {
-//         return NextResponse.json("require all files", { status: 400 });
-//     }
-
-//     try {
-//         const [update] = await db('currricular').insert({ name, noOfStudent, coordinator, activity }).returning("*");
-//         return NextResponse.json({ Message: "posted successfully", update }, { status: 200 });
-//     }
-//     catch (error) {
-//         return NextResponse.json({ Message: "fail to post data" }, { status: 5005 });
-//     }
-// }
+};
 
 export async function POST(request: Request) {
     const { name, noOfStudent, coordinator, activity } = await request.json();
@@ -41,4 +26,4 @@ export async function POST(request: Request) {
     } catch (error) {
         return NextResponse.json({ message: "Failed to post data" }, { status: 500 });
     }
-}
+};

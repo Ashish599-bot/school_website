@@ -21,11 +21,11 @@ export default function Contact() {
   const images = ["/work.jpg", "/woman.jpg"];
 
   return (
-    <div className=" grid grid-cols-4 place-items-center mb-20">
+    <div className="min-h-screen grid grid-cols-4 mb-20">
       {inform?.map((school, index) => (
         <div
           key={school.id}
-          className="max-w-sm mx-auto bg-white rounded-2xl shadow-lg  mt-10 mb-12"
+          className="max-w-sm mx-auto h-[350px] bg-white rounded-2xl shadow-lg mt-10 mb-12"
         >
           <div className="flex justify-center mt-6">
             <img
