@@ -7,7 +7,7 @@ export default function Contact() {
 
   const fetchDetails = async () => {
     try {
-      const response = await fetch("/api");
+      const response = await fetch("/api/contact");
       const data = await response.json();
       setInform(data.getDetails);
     } catch (error) {
@@ -21,7 +21,7 @@ export default function Contact() {
   const images = ["/work.jpg", "/woman.jpg"];
 
   return (
-    <div className=" grid grid-cols-3 place-items-center mb-20">
+    <div className=" grid grid-cols-4 place-items-center mb-20">
       {inform?.map((school, index) => (
         <div
           key={school.id}

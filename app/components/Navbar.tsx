@@ -34,10 +34,9 @@ export default function Navbar() {
 
         <li>
           <Link
-            href=""
+            href="#"
             className="hover:text-gray-400 cursor-pointer shadow-lg text-white hover:underline"
           >
-            {" "}
             Extra-Curricular
           </Link>
         </li>
