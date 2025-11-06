@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
-import knex from 'knex';
-import knexConfig from '../../../knexfile';
+import knex from "knex";
+import knexConfig from "../../../knexfile";
 
 const db = knex(knexConfig.development);
 
@@ -26,4 +26,5 @@ export async function POST(request: Request) {
     } catch (error) {
         return NextResponse.json({ message: "Failed to post data" }, { status: 500 });
     }
-};
+  
+}
