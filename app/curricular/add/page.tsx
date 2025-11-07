@@ -47,20 +47,25 @@ export default function Adding() {
 
     return (
         <main className="min-h-screen p-6 grid place-items-center">
-            <div className="border p-10 flex flex-col gap-7">
-                <input type="text" placeholder="enter the name of programme"
+            <h1>Add some programme or Extra-Curricular</h1>
+            <div className="border p-10 flex flex-col gap-7 rounded bg-gray-800">
+                <input type="text" placeholder="enter the name of programme "
+                    className="border border-gray-400 rounded-md py-2 px-20"
                     onChange={addHandler}
                     name="name"
                     value={formData.name} />
-                <input type="text" placeholder="enter the number of student"
+                <input type="text" placeholder="enter the number of student flex justify-start"
+                    className="border border-gray-400 rounded-md py-2 px-20"
                     onChange={addHandler}
                     name="noOfStudent"
                     value={formData.noOfStudent} />
                 <input type="text" placeholder="Name coordinator"
+                    className="border border-gray-400 rounded-md py-2 px-20"
                     onChange={addHandler}
                     name="coordinator"
                     value={formData.coordinator} />
                 <input type="text" placeholder="Activity"
+                    className="border border-gray-400 rounded-md py-2 px-20"
                     onChange={addHandler}
                     name="activity"
                     value={formData.activity} />
