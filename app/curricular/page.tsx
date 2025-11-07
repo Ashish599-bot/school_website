@@ -6,7 +6,7 @@ export default function Extra() {
 
     const fetchData = async () => {
         try {
-            const response = await fetch("http://localhost:3000/api/curricular");
+            const response = await fetch(`http://localhost:3000/api/curricular`);
             const result = await response.json();
             setData(result.data);
             console.log(result);
@@ -31,10 +31,12 @@ export default function Extra() {
                             <h1>Number of Student: {items.noOfStudent}</h1>
                             <h1>Activity: {items.activity}</h1>
                         </div>
-                        <div className="flex items-center justify-center gap-4 text-xl">
-                            <h1 className="text-blue-500 hover:text-white hover:underline">Update Details</h1>
+                        <div className="text-2xl flex gap-5 items-center justify-center">
+                            <Link href={`/curricular/edit/${items.id}`} className="text-blue-500 hover:text-white hover:underline">Update Details</Link>
                             <h1 className="text-red-500 hover:text-white hover:underline">Delete</h1>
                         </div>
+
+
 
                     </div>
                 ))}

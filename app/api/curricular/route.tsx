@@ -11,20 +11,17 @@ export async function GET() {
 };
 
 export async function POST(request: Request) {
-    const { name, noOfStudent, coordinator, activity } = await request.json();
+    const body = await request.json()
+    const { name, noOfStudent, coordinator, activity } = body;
+    console.log(body)
 
-    if (!name || !noOfStudent || !coordinator || !activity) {
-        return NextResponse.json({ message: "Require all fields" }, { status: 400 });
-    }
-
+    // if (!name || !noOfStudent || !coordinator || !activity) {
+    //     return NextResponse.json({ message: "Require all fields" }, { status: 400 });
+    // };
     try {
-        const update = await db('curricular')
-            .insert({ name, noOfStudent, coordinator, activity })
-            .returning("*");
-
-        return NextResponse.json({ message: "Posted successfully", update }, { status: 200 });
+        const [inserted] = await db('curricular').insert({ name, noOfStudent, coordinator, activity }).returning("*")
+        return NextResponse.json({ message: "Posted successfully", inserted }, { status: 200 });
     } catch (error) {
         return NextResponse.json({ message: "Failed to post data" }, { status: 500 });
-    }
-  
+    };
 }
