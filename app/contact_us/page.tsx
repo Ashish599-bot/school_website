@@ -55,10 +55,11 @@ export default function Contact() {
   };
 
   return (
-    <main>
-      <div className="flex gap-4 justify-center items-center mt-4">
+    <div>
+      {/* Search Input */}
+      <div className="flex gap-4 justify-center items-center mt-4 mb-6">
         <input
-          className="py-2 px-4 shadow-lg rounded-xl border border-black"
+          className="py-2 px-4 shadow-lg rounded-xl border border-black bg-white text-black"
           placeholder="Search here"
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -70,7 +71,9 @@ export default function Contact() {
           Search
         </button>
       </div>
-      <div className=" grid grid-cols-4 place-items-center mb-20">
+
+      {/* Grid of Schools */}
+      <div className="min-h-screen grid grid-cols-4 gap-6 mb-20">
         {inform?.map((school, index) => (
           <div
             key={school.id}
@@ -132,6 +135,6 @@ export default function Contact() {
           </div>
         ))}
       </div>
-    </main>
-  );
+    </div>
+  )
 }
