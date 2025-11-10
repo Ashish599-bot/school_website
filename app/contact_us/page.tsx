@@ -5,6 +5,12 @@ import { useEffect, useState } from "react";
 export default function Contact() {
   const [inform, setInform] = useState<any[] | null>(null);
   const [name, setName] = useState("");
+  const [show, setShow] = useState(false);
+  const [showName, setShowName] = useState({
+    name: " ",
+    contact: " ",
+    email: " ",
+  });
 
   const fetchDetails = async () => {
     try {
@@ -52,8 +58,12 @@ export default function Contact() {
     } else {
       alert("Failed to delete");
     }
+    setShow(false);
   };
 
+  const sn = async (n: any) => {
+    setShowName(n);
+  };
   return (
     <div>
       {/* Search Input */}
@@ -77,7 +87,7 @@ export default function Contact() {
         {inform?.map((school, index) => (
           <div
             key={school.id}
-            className="max-w-sm mx-auto bg-white rounded-2xl shadow-lg relative mt-10 mb-12"
+            className="max-w-sm mx-auto h-[320px] bg-white rounded-2xl shadow-lg relative mt-10 mb-12"
           >
             <div className="flex justify-center mt-6">
               <img
@@ -114,7 +124,7 @@ export default function Contact() {
             <div className=" absolute top-2 right-2">
               <button
                 className=" text-red-500 cursor-pointer hover:text-red-700"
-                onClick={() => deleteData(school.id)}
+                onClick={() => [setShow(true), sn(school)]}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -132,9 +142,33 @@ export default function Contact() {
                 </svg>
               </button>
             </div>
+            {show && (
+              <div className="fixed inset-0 flex items-center justify-center bg-black">
+                <div className="bg-white p-6 rounded-lg shadow-lg">
+                  <p className="text-lg font-medium mb-4">
+                    Are you sure you want to delete{" "}
+                    <span className="font-bold">"{showName.name}"</span>?
+                  </p>
+                  <div className="flex justify-end gap-3">
+                    <button
+                      onClick={() => setShow(false)}
+                      className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 cursor-pointer"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      onClick={() => deleteData(school.id)}
+                      className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 cursor-pointer"
+                    >
+                      Confirm
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         ))}
       </div>
     </div>
-  )
+  );
 }
