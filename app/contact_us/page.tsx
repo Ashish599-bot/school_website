@@ -1,16 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function Contact() {
   const [inform, setInform] = useState<any[] | null>(null);
   const [name, setName] = useState("");
-  const [show, setShow] = useState(false);
-  const [showName, setShowName] = useState({
-    name: " ",
-    contact: " ",
-    email: " ",
-  });
+  const [show, setShow] = useState(null);
+  const [showName, setShowName] = useState({ name: " " });
+  const [showMore, setShowMore] = useState(false);
 
   const fetchDetails = async () => {
     try {
@@ -52,13 +50,8 @@ export default function Contact() {
       method: "DELETE",
       headers: { "content-type": "application/json" },
     });
-    if (res.ok) {
-      fetchDetails();
-      alert("Successfully deleted");
-    } else {
-      alert("Failed to delete");
-    }
-    setShow(false);
+    fetchDetails();
+    setShow(null);
   };
 
   const sn = async (n: any) => {
@@ -66,8 +59,40 @@ export default function Contact() {
   };
   return (
     <div>
+      <div className=" flex justify-end items-end mr-6 mt-4 relative">
+        <button
+          onClick={() => setShowMore(!showMore)}
+          className=" cursor-pointer hover:text:black"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="size-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+        </button>
+        {showMore && (
+          <div className="absolute top-full right-0 mt-2 bg-white border border-gray-300 rounded-lg shadow-lg p-3 flex flex-col gap-2">
+            <button className="bg-blue-500 text-white px-3 py-1 rounded-lg hover:bg-blue-600">
+              Refresh
+            </button>
+            <button className="bg-green-500 text-white px-3 py-1 rounded-lg hover:bg-green-600">
+              <Link href="/form/apply">Apply</Link>
+            </button>
+          </div>
+        )}
+      </div>
+
       {/* Search Input */}
-      <div className="flex gap-4 justify-center items-center mt-4 mb-6">
+      <div className="flex gap-4 justify-center items-center  mb-10">
         <input
           className="py-2 px-4 shadow-lg rounded-xl border border-black bg-white text-black"
           placeholder="Search here"
@@ -124,7 +149,7 @@ export default function Contact() {
             <div className=" absolute top-2 right-2">
               <button
                 className=" text-red-500 cursor-pointer hover:text-red-700"
-                onClick={() => [setShow(true), sn(school)]}
+                onClick={() => [setShow(school.id), sn(school)]}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -151,13 +176,13 @@ export default function Contact() {
                   </p>
                   <div className="flex justify-end gap-3">
                     <button
-                      onClick={() => setShow(false)}
+                      onClick={() => setShow(null)}
                       className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 cursor-pointer"
                     >
                       Cancel
                     </button>
                     <button
-                      onClick={() => deleteData(school.id)}
+                      onClick={() => deleteData(show)}
                       className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 cursor-pointer"
                     >
                       Confirm
