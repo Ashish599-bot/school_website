@@ -9,6 +9,11 @@ export default function Contact() {
   const [show, setShow] = useState(null);
   const [showName, setShowName] = useState({ name: " " });
   const [showMore, setShowMore] = useState(false);
+  const [email, setEmail] = useState("");
+  const [contact_Number, setContact_Number] = useState("");
+  const [year_experience, setYear_experience] = useState("");
+  const [job_title, setJob_title] = useState("");
+  const [open, setOpen] = useState(null);
 
   const fetchDetails = async () => {
     try {
@@ -57,6 +62,35 @@ export default function Contact() {
   const sn = async (n: any) => {
     setShowName(n);
   };
+
+  const updateData = async (e: any, id: number) => {
+    e.preventDefault();
+
+    const res = await fetch(`/api/update/${id}`, {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        contact_Number: contact_Number,
+        year_experience: year_experience,
+        job_title: job_title,
+      }),
+    });
+    if (!res.ok) {
+      return alert("Failed to update");
+    } else {
+      setName("");
+      setEmail("");
+      setContact_Number("");
+      setYear_experience("");
+      setJob_title("");
+      setOpen(null);
+      fetchDetails();
+
+      alert("Detail updated successfully");
+    }
+  };
   return (
     <div>
       <div className=" flex justify-end items-end mr-6 mt-4 relative">
@@ -81,9 +115,6 @@ export default function Contact() {
         </button>
         {showMore && (
           <div className="absolute top-full right-0 mt-2 bg-white border border-gray-300 rounded-lg shadow-lg p-3 flex flex-col gap-2">
-            <button className="bg-blue-500 text-white px-3 py-1 rounded-lg hover:bg-blue-600">
-              Refresh
-            </button>
             <button className="bg-green-500 text-white px-3 py-1 rounded-lg hover:bg-green-600">
               <Link href="/form/apply">Apply</Link>
             </button>
@@ -146,7 +177,7 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className=" absolute top-2 right-2">
+            <div className=" absolute top-2 right-2 grid">
               <button
                 className=" text-red-500 cursor-pointer hover:text-red-700"
                 onClick={() => [setShow(school.id), sn(school)]}
@@ -166,7 +197,88 @@ export default function Contact() {
                   />
                 </svg>
               </button>
+              <button
+                onClick={() =>
+                  open === school.id ? setOpen(null) : setOpen(school.id)
+                }
+                className="text-green-400 mt-2 cursor-pointer hover:text-green-600"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="size-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
+                  />
+                </svg>
+              </button>
             </div>
+            {open === school.id && (
+              <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+                <div className="bg-white p-6 rounded-lg shadow-xl w-[400px]">
+                  <h1 className="text-2xl font-bold mb-4">Edit Details</h1>
+
+                  <form onSubmit={(e) => updateData(e, school.id)}>
+                    <input
+                      className="border p-2 w-full mb-3 rounded"
+                      placeholder="Name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+
+                    <input
+                      className="border p-2 w-full mb-3 rounded"
+                      placeholder="Job Title"
+                      value={job_title}
+                      onChange={(e) => setJob_title(e.target.value)}
+                    />
+
+                    <input
+                      className="border p-2 w-full mb-3 rounded"
+                      placeholder="Contact"
+                      value={contact_Number}
+                      onChange={(e) => setContact_Number(e.target.value)}
+                    />
+
+                    <input
+                      className="border p-2 w-full mb-3 rounded"
+                      placeholder="Email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+
+                    <input
+                      className="border p-2 w-full mb-3 rounded"
+                      placeholder="Years Exp"
+                      value={year_experience}
+                      onChange={(e) => setYear_experience(e.target.value)}
+                    />
+
+                    <button
+                      type="submit"
+                      className="w-full bg-blue-500 text-white p-2 rounded mt-3 hover:bg-blue-600"
+                    >
+                      Save
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setOpen(null)}
+                      className="w-full bg-gray-300 text-black p-2 rounded mt-3 hover:bg-gray-400"
+                    >
+                      Cancel
+                    </button>
+                  </form>
+                </div>
+              </div>
+            )}
+
             {show && (
               <div className="fixed inset-0 flex items-center justify-center bg-black">
                 <div className="bg-white p-6 rounded-lg shadow-lg">
