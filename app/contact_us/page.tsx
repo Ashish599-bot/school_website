@@ -262,7 +262,7 @@ export default function Contact() {
 
                     <button
                       type="submit"
-                      className="w-full bg-blue-500 text-white p-2 rounded mt-3 hover:bg-blue-600"
+                      className="w-full bg-blue-500 text-white p-2 rounded mt-3 hover:bg-blue-600 cursor-pointer"
                     >
                       Save
                     </button>
@@ -270,7 +270,7 @@ export default function Contact() {
                     <button
                       type="button"
                       onClick={() => setOpen(null)}
-                      className="w-full bg-gray-300 text-black p-2 rounded mt-3 hover:bg-gray-400"
+                      className="w-full bg-gray-300 text-black p-2 rounded mt-3 hover:bg-gray-400 cursor-pointer"
                     >
                       Cancel
                     </button>
